@@ -130,6 +130,8 @@ N              # repeat search in opposite direction
 ## Search in multiple files
 ```bash
 :vimgrep /pattern/ {file} # search for pattern in multiple files
+:grep [option] 'pattern' files #同vimgrep, 使用系统的grep
+                          # ./* 表示当前路径下的所有文件.  或者用 %:p:h/*, 或者%:h/*.js
 :cn                       # jump to the next match
 :cp                       # jump to the previous match
 :copen                    # open a window containing the list of matches
@@ -146,10 +148,14 @@ N              # repeat search in opposite direction
 
 ## Working with multiple files
 ```bash
-:e file       # edit a file in a new buffer
+:e file       # edit a file in a new buffer. 使用Tab键, 自动补全当前文件或目录名. 
+              # 使用**进行通配, 例如: :e **/test/Suite.java, 甚至 :e **/Suit <Tab> 支持自动提示条件的文件名
+:Ex           # 打开文件浏览器.
+:Sex          # 新建split window, 在里面打开文件浏览器.
 :bnext or :bn # go to the next buffer
 :bprev or :bp # go to the previous buffer
-:bd           # delete a buffer (close a file)
+:bd           # delete a buffer (close a file) 最后一个文件关闭而不退出vim
+:bw           # 和bd有什么区别?
 :ls           # list all open buffers
 :sp file      # open a file in a new buffer and split window
 :vsp file     # open a file in a new buffer and vertically split window
